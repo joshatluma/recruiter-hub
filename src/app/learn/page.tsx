@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import AppLayout from "@/components/layout/AppLayout";
 import {
   GraduationCap,
@@ -6,110 +9,147 @@ import {
   ChevronRight,
   Clock,
   BookOpen,
-  Trophy,
-  Lock,
+  Loader2,
+  Users,
+  Award,
+  Briefcase,
+  Calendar,
 } from "lucide-react";
 import Link from "next/link";
 
-// Mock learning path data
-const onboardingPath = {
+interface LearningPath {
+  id: string;
+  title: string;
+  description: string;
+  isOnboarding: boolean;
+  order: number;
+  itemCount: number;
+}
+
+// Demo learning paths based on real Luma content
+const demoOnboardingPath = {
   id: "onboarding",
   title: "New Recruiter Onboarding",
-  description: "Complete this path to get up to speed with recruiting at Luma Labs.",
-  totalModules: 8,
-  completedModules: 3,
-  estimatedHours: 6,
+  description: "Essential training for new recruiting team members at Luma.",
+  totalModules: 5,
+  completedModules: 0,
+  estimatedHours: 4,
   modules: [
     {
       id: "m1",
-      title: "Welcome to Luma Labs Recruiting",
-      description: "Introduction to our team, culture, and recruiting philosophy.",
+      title: "Our North Star: Luma's Mission & Values",
+      description: "Understand Luma's mission and the 7 core values that guide every hiring decision.",
       duration: "30 min",
-      completed: true,
-    },
-    {
-      id: "m2",
-      title: "Understanding Our Tech Stack",
-      description: "Overview of the technologies we use and what to look for in candidates.",
-      duration: "45 min",
-      completed: true,
-    },
-    {
-      id: "m3",
-      title: "Greenhouse ATS Fundamentals",
-      description: "Learn how to navigate and use our applicant tracking system.",
-      duration: "1 hr",
-      completed: true,
-    },
-    {
-      id: "m4",
-      title: "Sourcing Strategies",
-      description: "Effective techniques for finding great candidates.",
-      duration: "1 hr",
       completed: false,
       current: true,
     },
     {
-      id: "m5",
-      title: "Screening & Phone Interviews",
-      description: "How to conduct effective initial candidate conversations.",
+      id: "m2",
+      title: "The Recruiting Process Playbook",
+      description: "Our complete standard operating procedure for hiring—from intake to offer.",
       duration: "45 min",
       completed: false,
     },
     {
-      id: "m6",
-      title: "Interview Coordination",
-      description: "Managing the interview process and stakeholder communication.",
+      id: "m3",
+      title: "SLAs & Communication Standards",
+      description: "Service level agreements and communication standards for candidate experience.",
       duration: "30 min",
       completed: false,
     },
     {
-      id: "m7",
-      title: "Offer Management",
-      description: "Crafting and extending competitive offers.",
+      id: "m4",
+      title: "Recruiting Tech Stack Overview",
+      description: "Core tools for sourcing, interviewing, and hiring at Luma.",
       duration: "45 min",
       completed: false,
     },
     {
-      id: "m8",
-      title: "Candidate Experience Excellence",
-      description: "Ensuring every candidate has a great experience with Luma.",
+      id: "m5",
+      title: "The Recruiter Alignment Document (RAD)",
+      description: "How to use RADs effectively for role alignment and success.",
       duration: "30 min",
       completed: false,
     },
   ],
 };
 
-const explorePaths = [
+const demoExplorePaths = [
   {
-    id: "advanced-sourcing",
-    title: "Advanced Sourcing Techniques",
-    description: "Master Boolean search, X-ray techniques, and passive candidate outreach.",
-    modules: 5,
-    estimatedHours: 4,
+    id: "interviewer-certification",
+    title: "Interviewer Certification Path",
+    description: "Complete this path to become a certified interviewer at Luma.",
+    modules: 2,
+    estimatedHours: 2,
+    level: "Required",
+    icon: Award,
+  },
+  {
+    id: "closing-offers",
+    title: "Closing & Offers Mastery",
+    description: "Master the art of extending and closing offers.",
+    modules: 2,
+    estimatedHours: 1,
     level: "Intermediate",
+    icon: Briefcase,
   },
   {
-    id: "dei-recruiting",
-    title: "Inclusive Recruiting Practices",
-    description: "Build diverse teams through intentional, bias-aware recruiting.",
-    modules: 6,
-    estimatedHours: 3,
-    level: "All Levels",
-  },
-  {
-    id: "exec-recruiting",
-    title: "Executive Search",
-    description: "Strategies for sourcing and closing senior leadership roles.",
+    id: "hiring-manager",
+    title: "Hiring Manager Essentials",
+    description: "Key training for hiring managers working with the recruiting team.",
     modules: 4,
-    estimatedHours: 3,
-    level: "Advanced",
+    estimatedHours: 2,
+    level: "For HMs",
+    icon: Users,
+  },
+  {
+    id: "scheduling",
+    title: "Scheduling & Coordination",
+    description: "Training for coordinators and scheduling operations.",
+    modules: 3,
+    estimatedHours: 1,
+    level: "Operations",
+    icon: Calendar,
   },
 ];
 
 export default function LearnPage() {
+  const [paths, setPaths] = useState<LearningPath[]>([]);
+  const [loading, setLoading] = useState(true);
   const user = { name: "Demo User", email: "demo@lumalabs.ai", role: "user" };
+
+  useEffect(() => {
+    loadPaths();
+  }, []);
+
+  async function loadPaths() {
+    try {
+      const res = await fetch("/api/learning-paths");
+      if (res.ok) {
+        const data = await res.json();
+        setPaths(data);
+      }
+    } catch (error) {
+      console.error("Error loading paths:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // Use real data or fallback to demo
+  const onboardingPath = demoOnboardingPath;
+  const explorePaths = demoExplorePaths;
   const progress = (onboardingPath.completedModules / onboardingPath.totalModules) * 100;
+
+  if (loading) {
+    return (
+      <AppLayout user={user}>
+        <div className="flex items-center justify-center min-h-[50vh]">
+          <Loader2 className="w-8 h-8 animate-spin text-[var(--accent-primary)]" />
+        </div>
+      </AppLayout>
+    );
+  }
 
   return (
     <AppLayout user={user}>
@@ -169,7 +209,7 @@ export default function LearnPage() {
             {onboardingPath.modules.map((module, index) => (
               <Link
                 key={module.id}
-                href={`/learn/${onboardingPath.id}/${module.id}`}
+                href={`/content/demo-${index + 1}`}
                 className={`flex items-center gap-4 p-4 transition-colors ${
                   module.completed
                     ? "hover:bg-[var(--bg-tertiary)]"
@@ -195,7 +235,7 @@ export default function LearnPage() {
                     <span className="text-sm text-[var(--text-muted)]">Module {index + 1}</span>
                     {module.current && (
                       <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--accent-primary)] text-white">
-                        Current
+                        Start Here
                       </span>
                     )}
                   </div>
@@ -224,42 +264,57 @@ export default function LearnPage() {
           <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">
             Explore More Paths
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {explorePaths.map((path) => (
-              <Link
-                key={path.id}
-                href={`/learn/${path.id}`}
-                className="surface rounded-xl p-5 card-hover"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-[var(--accent-secondary)]/10 flex items-center justify-center">
-                    <BookOpen className="w-5 h-5 text-[var(--accent-secondary)]" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {explorePaths.map((path) => {
+              const IconComponent = path.icon;
+              return (
+                <Link
+                  key={path.id}
+                  href={`/learn/${path.id}`}
+                  className="surface rounded-xl p-5 card-hover"
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="w-10 h-10 rounded-lg bg-[var(--accent-secondary)]/10 flex items-center justify-center">
+                      <IconComponent className="w-5 h-5 text-[var(--accent-secondary)]" />
+                    </div>
+                    <span className="text-xs px-2 py-1 rounded bg-[var(--bg-tertiary)] text-[var(--text-muted)]">
+                      {path.level}
+                    </span>
                   </div>
-                  <span className="text-xs px-2 py-1 rounded bg-[var(--bg-tertiary)] text-[var(--text-muted)]">
-                    {path.level}
-                  </span>
-                </div>
 
-                <h3 className="font-semibold text-[var(--text-primary)] mb-1">
-                  {path.title}
-                </h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-2">
-                  {path.description}
-                </p>
+                  <h3 className="font-semibold text-[var(--text-primary)] mb-1">
+                    {path.title}
+                  </h3>
+                  <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-2">
+                    {path.description}
+                  </p>
 
-                <div className="flex items-center gap-4 text-xs text-[var(--text-muted)]">
-                  <span className="flex items-center gap-1">
-                    <BookOpen className="w-3.5 h-3.5" />
-                    {path.modules} modules
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    ~{path.estimatedHours}h
-                  </span>
-                </div>
-              </Link>
-            ))}
+                  <div className="flex items-center gap-4 text-xs text-[var(--text-muted)]">
+                    <span className="flex items-center gap-1">
+                      <BookOpen className="w-3.5 h-3.5" />
+                      {path.modules} modules
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5" />
+                      ~{path.estimatedHours}h
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
+        </div>
+
+        {/* Info callout */}
+        <div className="surface rounded-xl p-6 border-l-4 border-[var(--accent-primary)] animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+          <h3 className="font-semibold text-[var(--text-primary)] mb-2">
+            About Learning Paths
+          </h3>
+          <p className="text-sm text-[var(--text-secondary)]">
+            Learning paths are curated sequences of content designed to build your skills systematically.
+            Complete the <strong>New Recruiter Onboarding</strong> path first to get familiar with Luma&apos;s
+            recruiting philosophy, processes, and tools. Then explore specialized paths based on your role and interests.
+          </p>
         </div>
       </div>
     </AppLayout>

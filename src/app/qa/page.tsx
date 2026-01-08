@@ -12,64 +12,64 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-// Mock Q&A data
-const questions = [
+// Demo Q&A data based on Luma recruiting processes
+const demoQuestions = [
   {
     id: "1",
-    title: "What's the best way to source senior ML engineers?",
-    body: "I'm struggling to find qualified ML engineers with 5+ years of experience. What platforms and techniques have worked best for the team?",
-    author: "Emily Davis",
+    title: "How do I create a RAD for a new role?",
+    body: "I just completed an intake meeting with a hiring manager for a new Software Engineer role. What's the process for creating the RAD, and where should I store it?",
+    author: "New Recruiter",
     authorImage: null,
     createdAt: "2 hours ago",
-    tags: ["sourcing", "ml-engineering", "technical"],
+    tags: ["rad", "intake", "process"],
+    answers: 2,
+    resolved: true,
+    upvotes: 8,
+  },
+  {
+    id: "2",
+    title: "What's the SLA for interview feedback submission?",
+    body: "I have an interviewer who hasn't submitted feedback for 3 days. What's our official policy and how should I follow up?",
+    author: "Maria Santos",
+    authorImage: null,
+    createdAt: "5 hours ago",
+    tags: ["sla", "feedback", "interviewers"],
     answers: 3,
     resolved: true,
     upvotes: 12,
   },
   {
-    id: "2",
-    title: "How do we handle counter-offers?",
-    body: "A candidate just received a counter-offer from their current employer. What's our approach for handling these situations?",
-    author: "New Recruiter",
-    authorImage: null,
-    createdAt: "5 hours ago",
-    tags: ["offers", "negotiation", "closing"],
-    answers: 5,
-    resolved: true,
-    upvotes: 8,
-  },
-  {
     id: "3",
-    title: "Interview scheduling best practices for candidates in different time zones?",
-    body: "We have a candidate in Asia Pacific and need to coordinate interviews with our US-based team. Any tips for making this smoother?",
-    author: "Lisa Park",
+    title: "How do I hand off a candidate for scheduling in Gem?",
+    body: "I have a candidate ready for their core loop but I'm not sure about the proper handoff process to scheduling. What information should I include in the note?",
+    author: "Alex Kim",
     authorImage: null,
     createdAt: "1 day ago",
-    tags: ["interviews", "scheduling", "remote"],
-    answers: 2,
+    tags: ["scheduling", "gem", "coordination"],
+    answers: 1,
     resolved: false,
     upvotes: 5,
   },
   {
     id: "4",
-    title: "When should we involve the hiring manager in initial screens?",
-    body: "Some hiring managers want to be on initial phone screens. Is there a policy or best practice for when this makes sense?",
-    author: "Sarah Chen",
+    title: "What's the difference between P0 and P1 priority roles?",
+    body: "I have two open reqs and need to prioritize. The HM says both are urgent. How do I determine which should be P0 vs P1?",
+    author: "Jordan Lee",
     authorImage: null,
     createdAt: "2 days ago",
-    tags: ["screening", "hiring-managers", "process"],
+    tags: ["priorities", "process", "hiring"],
     answers: 4,
     resolved: true,
     upvotes: 15,
   },
   {
     id: "5",
-    title: "Greenhouse workflow for confidential searches?",
-    body: "We're working on a confidential executive search. How should we set up the job in Greenhouse to limit visibility?",
-    author: "James Wilson",
+    title: "How do I use Complete.so for team messages?",
+    body: "I'm creating my first offer in Complete.so and want to add team messages. How do I generate the link and share it with the team?",
+    author: "Sam Chen",
     authorImage: null,
     createdAt: "3 days ago",
-    tags: ["greenhouse", "executive-search", "confidential"],
+    tags: ["complete.so", "offers", "closing"],
     answers: 2,
     resolved: true,
     upvotes: 7,
@@ -151,7 +151,7 @@ export default function QAPage() {
 
         {/* Questions list */}
         <div className="space-y-3 stagger-children">
-          {questions.map((question) => (
+          {demoQuestions.map((question) => (
             <Link
               key={question.id}
               href={`/qa/${question.id}`}

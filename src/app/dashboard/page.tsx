@@ -92,11 +92,11 @@ export default function DashboardPage() {
     { name: "Content Created", value: displayUser.stats?.contentCreated || 0, icon: BookOpen },
   ];
 
-  // Demo content for when no content exists
+  // Demo content for when no content exists (matches real Luma content)
   const displayContent = recentContent.length > 0 ? recentContent : [
-    { id: "1", title: "Technical Sourcing Best Practices", type: "document", category: "Sourcing", description: "Learn effective strategies for sourcing technical candidates." },
-    { id: "2", title: "Interview Evaluation Framework", type: "checklist", category: "Interviews", description: "Standardized rubric for evaluating candidates." },
-    { id: "3", title: "Offer Negotiation Guide", type: "playbook", category: "Offers", description: "Complete guide to handling offer negotiations." },
+    { id: "demo-1", title: "Our North Star: Luma's Mission & Values", type: "document", category: "Foundational", description: "Understand Luma's mission and the 7 core values that guide every hiring decision." },
+    { id: "demo-2", title: "The Recruiting Process Playbook", type: "playbook", category: "Process", description: "Our complete standard operating procedure for hiring at Luma—from intake to offer." },
+    { id: "demo-3", title: "Interviewer Training 101", type: "document", category: "Training", description: "The 5-stage certification program for becoming a calibrated interviewer." },
   ];
 
   if (loading) {

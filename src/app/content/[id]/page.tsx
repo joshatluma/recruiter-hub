@@ -28,6 +28,364 @@ const typeIcons: Record<string, typeof FileText> = {
   wizard: BookOpen,
 };
 
+// Demo content matching real Luma Notion content
+const demoContentMap: Record<string, Partial<ContentItem>> = {
+  "demo-1": {
+    title: "Our North Star: Luma's Mission & Values",
+    description: "Understand Luma's mission to build multimodal general intelligence and our 7 core values that guide every hiring decision.",
+    type: "document",
+    category: "Foundational",
+    tags: ["values", "culture", "mission", "onboarding"],
+    body: `# Our North Star
+
+## Mission Statement
+**Luma's mission is to build multimodal general intelligence for everyone—making the creation and consumption of visual content limitless.**
+
+We believe intelligent systems should understand and generate the world as humans experience it: through sight, sound, and interaction.
+
+---
+
+## Our 7 Core Values
+
+### 1. Bias for Speed
+We move fast and ship. We'd rather be directionally correct and learn quickly than wait for perfect certainty. Speed is a competitive advantage and a cultural habit.
+
+### 2. High Standards
+We hold ourselves to exceptional quality. "Good enough" isn't good enough. We push for excellence in our work, our products, and our team.
+
+### 3. First Principles Thinking
+We question assumptions and reason from fundamentals. We don't copy playbooks—we understand why things work and build from there.
+
+### 4. Intellectual Honesty
+We tell the truth, especially when it's hard. We give and receive direct feedback. We admit mistakes and change our minds when evidence demands it.
+
+### 5. Low Ego, High Impact
+The best idea wins, regardless of who proposed it. We care about outcomes, not credit. We collaborate without politics.
+
+### 6. Ownership & Accountability
+We take full ownership of our work and its outcomes. We don't wait for permission or blame others. We see problems and fix them.
+
+### 7. Curiosity & Continuous Learning
+We're students first. We stay hungry to learn, grow, and understand. The best team members are always improving.
+
+---
+
+## Hiring Philosophy
+
+### Builder Over Optimizer
+We look for **builders**—people who create from scratch, thrive in ambiguity, and ship fast. Early-stage startups need people who build, not optimize existing systems.
+
+### Intellectual Horsepower + Drive
+We hire for raw intelligence combined with relentless work ethic. Smart and lazy doesn't work here. Neither does hardworking and slow.
+
+### Culture Add, Not Culture Fit
+We want people who share our values but bring diverse perspectives, experiences, and thinking styles.
+
+### High Bar, Fast Process
+We're selective but decisive. We know great talent doesn't wait. When we find someone exceptional, we move fast.`,
+  },
+  "demo-2": {
+    title: "The Recruiting Process Playbook",
+    description: "Our complete standard operating procedure for hiring at Luma—from intake to offer.",
+    type: "playbook",
+    category: "Process",
+    tags: ["process", "playbook", "hiring", "gem"],
+    body: `# The Recruiting Process Playbook
+
+## Our Philosophy: Structured Process, High-Signal Outcomes
+
+This playbook details our standard operating procedure for hiring at Luma. Following this process ensures consistency, fairness, and efficiency, allowing us to make high-quality hiring decisions quickly while providing an excellent candidate experience. **Gem is our single source of truth** for tracking all stages and activities.
+
+---
+
+## Overview: The Standard Hiring Funnel
+
+1. **Prep & Kickoff** — Aligning on the role and strategy
+2. **Sourcing & Application** — Building the candidate pool
+3. **Recruiter Screen** — Initial assessment of alignment and motivation
+4. **Hiring Manager Screen** — Deeper dive into domain expertise
+5. **Technical / Domain Assessment** — Role-specific skills evaluation
+6. **Core Interview Loop** — Cross-functional assessment
+7. **Luma & You** — Final alignment with leadership
+8. **Debrief & Final Decision** — Making the hire/no-hire call
+9. **Closing & Offer** — Extending and securing the offer
+
+---
+
+## Stage 1: Prep & Kickoff
+
+**Goal:** Ensure full alignment between Recruiter and Hiring Manager on the role, profile, process, and sourcing strategy *before* engaging candidates.
+
+**Key Activities:**
+- Hiring Manager submits headcount request
+- Recruiter and HM hold a formal intake meeting
+- Recruiter generates the RAD (Recruiter Alignment Document)
+- HM reviews and approves the RAD
+- Recruiter creates Job in Gem and configures stages
+
+**SLA:** RAD finalized & Gem job live within 48 hours of intake meeting
+
+---
+
+## Stage 2: Sourcing & Application
+
+**Goal:** Build a diverse and qualified pool of candidates aligned with the RAD.
+
+**Key Activities:**
+- Execute sourcing strategy from RAD
+- Use LinkedIn Recruiter, Gem AI, Juicebox, SeekOut
+- Post job to relevant channels
+- Review inbound applications
+
+**SLA:** New applications reviewed within 48 business hours
+
+---
+
+## Stage 3: Recruiter Screen
+
+**Goal:** Assess core alignment, motivations, logistics, and sell the Luma opportunity.
+
+**Key Activities:**
+- Schedule 30-minute screen
+- Use RAD screening questions
+- Log notes and scorecard in Gem
+- Advance qualified candidates
+
+**SLA:** Schedule within 24 hours. Notes within 24 hours of screen.
+
+---
+
+## Stage 4-9: See Full Documentation
+
+For detailed guidance on all remaining stages, please refer to the complete Recruiting Process Playbook in Notion.`,
+  },
+  "demo-3": {
+    title: "Interviewer Training 101",
+    description: "The 5-stage certification program for becoming a calibrated interviewer at Luma.",
+    type: "document",
+    category: "Training",
+    tags: ["interviewing", "training", "certification", "calibration"],
+    body: `# Interviewer Training 101
+
+## The 5-Stage Certification Program
+
+Becoming a certified interviewer at Luma involves a structured program to ensure calibration, consistency, and quality.
+
+---
+
+## Stage 1: Nomination
+
+**Who nominates:** Hiring Manager or Recruiting
+
+**Criteria for nomination:**
+- Has been at Luma for at least 90 days
+- Demonstrates Luma values
+- Has capacity for interview load
+- Relevant domain expertise for the role type
+
+---
+
+## Stage 2: Training
+
+**Format:** Self-paced + live session
+
+**Curriculum:**
+- Watch: "Calibrated Interviewing at Luma" (45 min video)
+- Read: Interview question bank for your domain
+- Complete: Bias awareness training
+- Attend: Live calibration session (1 hour)
+
+**Key Topics:**
+- Structured interviewing methodology
+- Evidence-based assessment
+- Avoiding common biases
+- Using scorecards effectively
+- Legal considerations
+
+---
+
+## Stage 3: Shadow
+
+**What you do:** Observe 2-3 interviews with a certified interviewer
+
+**Focus areas:**
+- How questions are asked
+- How follow-ups probe for depth
+- How evidence is captured
+- How scorecards are completed
+
+---
+
+## Stage 4: Reverse Shadow
+
+**What you do:** Lead 2-3 interviews while a certified interviewer observes
+
+**Graduation criteria:**
+- Consistent assessment quality
+- Proper interview technique
+- Accurate scorecard completion
+- Aligned with hiring bar
+
+---
+
+## Stage 5: Graduate
+
+**You're now certified to:**
+- Conduct interviews independently
+- Submit scorecards that inform hiring decisions
+- Shadow new interviewer trainees
+
+**Ongoing expectations:**
+- Maintain feedback SLA (24 hours)
+- Attend quarterly calibration sessions
+- Flag any concerns about process or candidates`,
+  },
+  "demo-4": {
+    title: "The Offer Playbook",
+    description: "A 5-stage process for extending compelling offers that close candidates.",
+    type: "playbook",
+    category: "Closing",
+    tags: ["offers", "closing", "compensation", "negotiation"],
+    body: `# The Offer Playbook
+
+## 5 Stages to Close
+
+### Stage 1: Pre-Offer Alignment
+Before building an offer, ensure alignment on:
+- Compensation expectations
+- Competing offers
+- Timeline for decision
+- Outstanding concerns
+
+### Stage 2: Building in Complete.so
+1. Copy application_id from Gem
+2. Search in Complete.so
+3. Create Offer (imports Gem data)
+4. Review all details
+5. Request team messages
+6. Add competing offers (optional)
+7. Save & Publish
+
+### Stage 3: Verbal Offer
+- Call the candidate
+- Walk through key terms
+- Gauge enthusiasm
+- Address concerns
+- Confirm timeline
+
+### Stage 4: Written Offer & Negotiation
+The package includes:
+- Base salary
+- Equity
+- Sign-on bonus
+- Start date
+- Title and level
+
+### Stage 5: Acceptance & Handoff
+1. Update Gem status
+2. Trigger pre-boarding workflows
+3. Schedule welcome call
+4. Hand off to People Ops
+5. Celebrate! 🎉`,
+  },
+  "demo-5": {
+    title: "SLAs & Communication Standards",
+    description: "Our service level agreements and communication standards for candidate experience.",
+    type: "document",
+    category: "Standards",
+    tags: ["sla", "communication", "candidate-experience", "standards"],
+    body: `# SLAs & Communication Standards
+
+## Our Philosophy: Speed, Clarity & Respect
+
+Our SLAs uphold our core philosophy: **Fast, Friendly, and Fair**.
+
+---
+
+## Core Recruiting SLAs
+
+| Stage | SLA Target | Owner |
+|-------|------------|-------|
+| Application Review | 48 Business Hours | Recruiter |
+| Recruiter Screen Scheduling | 24 Business Hours | Recruiter |
+| Interview Feedback | 24 Business Hours | Interviewer |
+| HM Review | 48 Business Hours | Hiring Manager |
+| Post-Loop Decision | 48 Business Hours | HM & Recruiter |
+| Offer Approval | 24 Business Hours | Biz Ops |
+| Rejection Notice | 48 Business Hours | Recruiter |
+| Response to Inquiries | 24 Business Hours | Recruiter |
+
+---
+
+## Communication Standards
+
+### Tone
+**Luma AI Hiring Voice:**
+- Aspirational
+- Direct
+- Inviting
+- Human & Authentic
+
+### Primary Channel
+Use **Gem** for all candidate communication.
+
+### Transparency
+Be clear about process, timelines, and next steps.
+
+### Personalization
+Use templates efficiently, but personalize for high-priority candidates and later-stage rejections.`,
+  },
+  "demo-6": {
+    title: "New Hire Onboarding Plan Template",
+    description: "The 5-day structured onboarding template for new team members.",
+    type: "checklist",
+    category: "Onboarding",
+    tags: ["onboarding", "new-hire", "template", "checklist"],
+    body: `# New Hire Onboarding Plan
+
+## Pre-Start
+- Laptop ordered and configured
+- Accounts created (Google, Slack, Notion, Gem)
+- Calendar invites sent
+- Welcome email sent
+- Buddy assigned
+
+## Day 1: Welcome & Orientation
+- Welcome meeting with manager
+- IT setup
+- Security credentials
+- Workspace tour
+- HR paperwork
+- Meet your buddy
+
+## Day 2: Culture & Values
+- Deep dive: Our North Star
+- Team structure review
+- Communication norms
+- Meet key stakeholders
+- Shadow a team meeting
+
+## Day 3: Role Deep-Dive
+- Role-specific training
+- Review expectations
+- Introduction to tools
+- First small task
+
+## Day 4: Cross-Functional Exposure
+- Meet cross-functional partners
+- Understand intersections
+- Continue training
+- Work on tasks
+
+## Day 5: Integration & Feedback
+- Complete training
+- Set 30/60/90 day goals
+- Team welcome lunch
+- Submit feedback
+- Week 1 retro with manager`,
+  },
+};
+
 interface ContentItem {
   id: string;
   title: string;
@@ -65,8 +423,10 @@ export default function ContentDetailPage() {
   }, [params.id]);
 
   async function loadContent() {
+    const contentId = params.id as string;
+
     try {
-      const res = await fetch(`/api/content/${params.id}`);
+      const res = await fetch(`/api/content/${contentId}`);
       if (res.ok) {
         const data = await res.json();
         setContent(data);
@@ -74,68 +434,46 @@ export default function ContentDetailPage() {
           setChecklistState(data.progress.checklistState);
         }
       } else {
-        // Demo fallback
-        setContent({
-          id: params.id as string,
-          title: "Technical Sourcing Best Practices",
-          description: "Learn effective strategies for sourcing technical candidates including Boolean search techniques and platform optimization.",
-          type: "document",
-          body: `# Technical Sourcing Best Practices
-
-## Overview
-This guide covers the essential techniques for sourcing technical candidates effectively at Luma Labs.
-
-## Key Strategies
-
-### 1. Boolean Search Mastery
-Master Boolean search operators to find the right candidates:
-- Use AND to combine requirements: \`"software engineer" AND Python AND React\`
-- Use OR for alternatives: \`"senior developer" OR "staff engineer"\`
-- Use NOT to exclude: \`engineer NOT "support engineer"\`
-- Use quotes for exact phrases: \`"machine learning"\`
-
-### 2. Platform-Specific Techniques
-
-#### LinkedIn
-- Use LinkedIn Recruiter's advanced filters
-- Search by current and past companies
-- Look at "People also viewed" sections
-- Check who's engaging with relevant content
-
-#### GitHub
-- Search by language and location
-- Look at contributors to popular repos
-- Check starred repositories for interests
-- Review commit history for consistency
-
-### 3. Outreach Best Practices
-- Personalize every message
-- Reference specific work or projects
-- Keep messages concise (under 150 words)
-- Include a clear call to action
-
-## Common Mistakes to Avoid
-- Sending generic templates
-- Not researching the candidate first
-- Overselling the role
-- Being too pushy in follow-ups
-
-## Key Takeaways
-1. Quality over quantity in sourcing
-2. Personalization is essential
-3. Build relationships, not transactions
-4. Track your metrics to improve`,
-          videoUrl: null,
-          category: "Sourcing",
-          tags: ["sourcing", "technical", "linkedin", "boolean-search"],
-          status: "published",
-          version: 1,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-          authorName: "Sarah Chen",
-          authorImage: null,
-          progress: null,
-        });
+        // Check for demo content
+        const demoContent = demoContentMap[contentId];
+        if (demoContent) {
+          setContent({
+            id: contentId,
+            title: demoContent.title || "Content",
+            description: demoContent.description || "",
+            type: demoContent.type || "document",
+            body: demoContent.body || "",
+            videoUrl: null,
+            category: demoContent.category || "General",
+            tags: demoContent.tags || [],
+            status: "published",
+            version: 1,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            authorName: "Luma Recruiting",
+            authorImage: null,
+            progress: null,
+          });
+        } else {
+          // Generic fallback
+          setContent({
+            id: contentId,
+            title: "Content Not Found",
+            description: "This content could not be loaded.",
+            type: "document",
+            body: "The requested content is not available. Please try browsing the content library.",
+            videoUrl: null,
+            category: "General",
+            tags: [],
+            status: "published",
+            version: 1,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            authorName: "Unknown",
+            authorImage: null,
+            progress: null,
+          });
+        }
       }
     } catch (error) {
       console.error("Error loading content:", error);
